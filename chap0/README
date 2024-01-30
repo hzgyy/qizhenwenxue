@@ -1,0 +1,7 @@
+这个例程演示了如何生成一个pcd文件，以及pcl基础的用cmake编译的流程。
+$ cd /PATH/TO/MY/GRAND/PROJECT
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+
