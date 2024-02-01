@@ -1,0 +1,2 @@
+本文件夹展示eigen线性代数库的基础使用方法。
+编译命令g++ <filename.cpp> -o <outputname> -I <eigen库位置，一般是/usr/include/eigen3>
