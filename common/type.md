@@ -38,6 +38,8 @@ Default index_t = int for PCL 1.11, std::int32_t for PCL >= 1.12
 ```
 
 ## PointCloud
+#include <pcl/point_cloud.h>
+
 PointCloud represents the base class in PCL for storing collections of 3D points
 
 https://pointclouds.org/documentation/classpcl_1_1_point_cloud.html
@@ -62,3 +64,10 @@ https://pointclouds.org/documentation/classpcl_1_1_point_cloud.html
     指明传感器的acquisition pose (origin/translation)
 - sensor_orientation_ Eigen::Quaternionf 
     指明传感器的acquisition pose (rotation).
+
+看文档吧，太多了…………
+
+## PointRepresentation
+#include <pcl/point_representation.h>
+
+用于把一个points的结构体/对象转化为一个n维向量。
