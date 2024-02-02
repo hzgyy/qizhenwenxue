@@ -14,3 +14,25 @@ kd tree一定是一个binary search tree。其每一层使用其中一维坐标�
 在选取pivot时，为了保持构建出的bst是尽可能平衡的，我们采用median-find algorithm来选取合适的pivot,
 
 实际用pcl时候不用管怎么构建的细节。
+
+## kdtree class template
+类内重命名
+```cpp
+using 	IndicesPtr = shared_ptr< Indices >
+
+using 	IndicesConstPtr = shared_ptr< const Indices >
+ 
+using 	PointCloud = pcl::PointCloud< PointT >
+ 
+using 	PointCloudPtr = typename PointCloud::Ptr
+ 
+using 	PointCloudConstPtr = typename PointCloud::ConstPtr
+ 
+using 	PointRepresentation = pcl::PointRepresentation< PointT >
+ 
+using 	PointRepresentationConstPtr = typename PointRepresentation::ConstPtr
+ 
+using 	Ptr = shared_ptr< KdTree< PointT > >
+ 
+using 	ConstPtr = shared_ptr< const KdTree< PointT > >
+```
