@@ -1,0 +1,1 @@
+注意编译好之后，把table_scene_mug_stereo_textured.pcd放到和可执行文件同一个目录下，之后用./executable_name 一般就./cylinder_segmentation 就可以运行了，运行结果是两个pcd文件，分别存储了分割出来的平面和圆柱（茶杯）。
