@@ -32,6 +32,7 @@ PointSurfel
 
 ## Indices 指标
 ```c++
+using pcl::IndicesConstPtr = typedef shared_ptr<const Indices>
 using pcl::Indices = typedef IndicesAllocator<>
 using pcl::IndicesAllocator = typedef std::vector<index_t, Allocator>
 Default index_t = int for PCL 1.11, std::int32_t for PCL >= 1.12
@@ -71,3 +72,89 @@ https://pointclouds.org/documentation/classpcl_1_1_point_cloud.html
 #include <pcl/point_representation.h>
 
 用于把一个points的结构体/对象转化为一个n维向量。
+
+## pcl_base
+```cpp
+pcl::PCLBase< PointT > 
+```
+应该是表示pcl里面存储点云容器的基类，相当重要！  
+为实现各种功能，都会对应各个功能继承pcl_base去建立一个自己的类  
+主要方法：  
+```cpp
+virtual void setInputCloud (const PointCloudConstPtr &cloud)
+```
+ 	Provide a pointer to the input dataset.
+```cpp
+PointCloudConstPtr const 	getInputCloud () const
+```
+    Get a pointer to the input point cloud dataset.
+```cpp
+virtual void setIndices (const IndicesPtr &indices)
+```
+ 	Provide a pointer to the vector of indices that represents the input data.
+```cpp
+IndicesPtr 	getIndices ()
+```
+    Get a pointer to the vector of indices used.
+
+## model type
+```cpp
+   enum SacModel
+   {
+     SACMODEL_PLANE,
+     SACMODEL_LINE,
+     SACMODEL_CIRCLE2D,
+     SACMODEL_CIRCLE3D,
+     SACMODEL_SPHERE,
+     SACMODEL_CYLINDER,
+     SACMODEL_CONE,
+     SACMODEL_TORUS,
+     SACMODEL_PARALLEL_LINE,
+     SACMODEL_PERPENDICULAR_PLANE,
+     SACMODEL_PARALLEL_LINES,
+     SACMODEL_NORMAL_PLANE,
+     SACMODEL_NORMAL_SPHERE,
+     SACMODEL_REGISTRATION,
+     SACMODEL_REGISTRATION_2D,
+     SACMODEL_PARALLEL_PLANE,
+     SACMODEL_NORMAL_PARALLEL_PLANE,
+     SACMODEL_STICK,
+     SACMODEL_ELLIPSE3D
+   };
+```
+
+## 条件 condition
+基类：
+```cpp
+pcl::ConditionBase< PointT >
+```
+子类：
+```cpp
+pcl::ConditionAnd< PointT >
+pcl::ConditionOr< PointT > 
+```
+主要方法：
+```cpp
+void pcl::ConditionBase< PointT >::addComparison(ComparisonBaseConstPtr comparison)	
+```
+Add a new comparison.
+```cpp
+void addCondition (Ptr condition)
+```
+Add a nested condition to this condition. 
+
+## 比较 comparison
+基类
+```cpp
+pcl::ComparisonBase< PointT >
+```
+具体方法在具体的子类中实现。
+```cpp
+pcl::FieldComparison< PointT >
+```
+继承于ComparisonBase，
+构造器：
+```cpp
+FieldComparison (const std::string &field_name, ComparisonOps::CompareOp op, double compare_val)
+```
+Construct a FieldComparison.
